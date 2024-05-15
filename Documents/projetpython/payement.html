@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>WL website</title>
+        <link href="css/style3.css" rel="stylesheet">
+    </head>
+<body>
+
+
+    <header>
+        <div class="header-content">
+            <h1>WL Website</h1>
+            <nav>
+                <button onclick="window.location.href='index.html';">Accueil</button>
+                <button onclick="window.location.href='list.html';">NFT</button>
+                <button onclick="window.location.href='contact.html';">Contact</button>
+                <button onclick="window.location.href='cart.html';">Panier</button>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="payment-form">
+        <h2>Paiement</h2>
+        <form id="paymentForm" action="/submit-payment" method="POST">
+            <div class="form-group">
+                <label for="name">Nom sur la carte</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="card-number">Numéro de carte</label>
+                <input type="text" id="card-number" name="card_number" required>
+            </div>
+            <div class="form-group">
+                <label for="expiry">Date d'expiration</label>
+                <input type="text" id="expiry" name="expiry" placeholder="MM/AA" required>
+            </div>
+            <div class="form-group">
+                <label for="cvc">CVC</label>
+                <input type="text" id="cvc" name="cvc" required>
+            </div>
+            <button type="submit">Payer</button>
+        </form>
+    </div>
+
+</body>
+</html>
+
+<script>
+    document.getElementById('paymentForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+    
+        var isValid = true;
+        this.querySelectorAll('input').forEach(function(input) {
+            if (!input.value.trim()) isValid = false;
+        });
+    
+        if (isValid) {
+            alert('Payement en cours...');
+    
+            window.location.href = 'payment-success.html';
+        } else {
+            alert('Formulaire de payement incomplet');
+        }
+    });
+    </script>
+    
+
+
+

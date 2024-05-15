@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz NFT</title>
+    <link rel="stylesheet" href="css/quizz.css">
+</head>
+<body>
+    <h1>Quiz sur les NFTs</h1>
+    <form id="quizForm">
+        <p>1. Qu'est-ce qu'un NFT ?</p>
+        <input type="radio" id="q1a" name="q1" value="0"><label for="q1a">A) Un type de crypto-monnaie.</label><br>
+        <input type="radio" id="q1b" name="q1" value="1"><label for="q1b">B) Un fichier numérique unique stocké sur une blockchain.</label><br>
+        <input type="radio" id="q1c" name="q1" value="0"><label for="q1c">C) Une méthode de paiement en ligne.</label>
+
+        <p>2. Sur quelle blockchain les NFTs sont-ils généralement émis ?</p>
+        <input type="radio" id="q2a" name="q2" value="0"><label for="q2a">A) Bitcoin</label><br>
+        <input type="radio" id="q2b" name="q2" value="1"><label for="q2b">B) Ethereum</label><br>
+        <input type="radio" id="q2c" name="q2" value="0"><label for="q2c">C) Ripple</label>
+
+        <p>3. Quel est l'un des avantages principaux de posséder un NFT ?</p>
+        <input type="radio" id="q3a" name="q3" value="0"><label for="q3a">A) Anonymat complet.</label><br>
+        <input type="radio" id="q3b" name="q3" value="1"><label for="q3b">B) Droits de propriété vérifiables.</label><br>
+        <input type="radio" id="q3c" name="q3" value="0"><label for="q3c">C) Revenu passif automatique.</label><br>
+
+        <button type="button" onclick="quizz()">Soumettre</button>
+    </form>
+    <script>
+        function quizz() {
+            var score = 0;
+            var totalQuestions = 3;
+            for (let i = 1; i <= totalQuestions; i++) {
+                var answers = document.getElementsByName('q' + i);
+                for (let j = 0; j < answers.length; j++) {
+                    if (answers[j].checked) {
+                        score += parseInt(answers[j].value);
+                        break;
+                    }
+                }
+            }
+            if (score >= 2) {
+                alert("Accès autorisé.");
+                // Redirection vers la page principale du site.
+                window.location.href = 'index.html';
+            } else {
+                alert("Accès refusé. Vous devez répondre correctement à au moins deux questions.");
+            }
+        }
+    </script>
+</body>
+</html>
